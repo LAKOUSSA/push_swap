@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 00:24:54 by gloukas           #+#    #+#             */
-/*   Updated: 2023/02/22 23:41:12 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/02/23 06:31:58 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void	swap(t_list *h, char *s)
 	h->data = h->next->data;
 	h->next->data = x;
 	if (s)
-		ft_printf("%s\n", s);
+		ft_putendl_fd(s, 1);
 }
 
 void	swap_both(t_list *a, t_list *b)
 {
 	swap(a, NULL);
 	swap(b, NULL);
-	ft_printf("ss\n");
+	ft_putendl_fd("ss", 1);
 }
 
 void	push(t_list **from, t_list **to, char *s)
@@ -41,7 +41,7 @@ void	push(t_list **from, t_list **to, char *s)
 	p = (*from)->next;
 	ft_lstadd_front(to, *from);
 	*from = p;
-	ft_printf("%s\n", s);
+	ft_putendl_fd(s, 1);
 }
 
 void	rotate(t_list **h, char *s)
@@ -55,12 +55,12 @@ void	rotate(t_list **h, char *s)
 	temp->next = NULL;
 	ft_lstadd_back(h, temp);
 	if (s)
-		ft_printf("%s\n", s);
+		ft_putendl_fd(s, 1);
 }
 
 void	rotate_both(t_list **a, t_list **b)
 {
 	rotate(a, NULL);
 	rotate(b, NULL);
-	ft_printf("rr\n");
+	ft_putendl_fd("rr", 1);
 }

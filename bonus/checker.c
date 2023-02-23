@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:14:29 by gloukas           #+#    #+#             */
-/*   Updated: 2023/02/23 04:12:22 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/02/23 05:44:32 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ void	check_args(char **glob)
 		index.j = -1;
 		while (glob[index.i][++index.j])
 			if (glob[index.i][index.j] != '-' && glob[index.i][index.j] != '+'
-				&& glob[index.i][index.j] != '\t'
 				&& glob[index.i][index.j] != ' '
 				&& (glob[index.i][index.j] < '0'
 					|| glob[index.i][index.j] > '9'))
-				printerror("ERROR");
+				printerror("Error");
 	}
 	index.i = -1;
 	while (glob[++index.i])
@@ -35,7 +34,7 @@ void	check_args(char **glob)
 		while (glob[index.j])
 		{
 			if (ft_atoi(glob[index.i]) == ft_atoi(glob[index.j]))
-				printerror("ERROR");
+				printerror("Error");
 			index.j++;
 		}
 	}
@@ -54,12 +53,12 @@ char	**join_args(int ac, char *av[])
 	while (++index.i < ac)
 	{
 		if (!ft_strlen(av[index.i]))
-			printerror("ERROR");
+			printerror("Error");
 		index.j = 0;
-		while (av[index.i][index.j] == '\t' || av[index.i][index.j] == ' ')
+		while (av[index.i][index.j] == ' ')
 			index.j++;
 		if (index.j == ft_strlen(av[index.i]))
-			printerror("ERROR");
+			printerror("Error");
 		line = ft_strjoin(line, av[index.i]);
 		line = ft_strjoin(line, " ");
 	}
@@ -80,7 +79,7 @@ t_list	*to_stack(char **glob)
 	{
 		n = ft_atoi(glob[index.i]);
 		if (n > INT_MAX || n < INT_MIN)
-			printerror("ERROR");
+			printerror("Error");
 		if (index.i == 0)
 			a = ft_lstnew(n);
 		else
@@ -108,7 +107,7 @@ int	main(int ac, char *av[])
 		free(s);
 	}
 	if (is_sorted(a, b))
-		ft_printf("OK\n");
+		ft_putendl_fd("OK", 1);
 	else
-		ft_printf("KO\n");
+		ft_putendl_fd("KO", 1);
 }

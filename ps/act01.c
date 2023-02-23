@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 00:50:10 by gloukas           #+#    #+#             */
-/*   Updated: 2023/02/21 22:54:31 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/02/23 05:19:37 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,19 @@ void	reverse_rotate(t_list **h, char *s)
 	last->next = *h;
 	*h = last;
 	if (s)
-		ft_printf("%s\n", s);
+		ft_putendl_fd(s, 1);
 }
 
 void	reverse_rotate_both(t_list **a, t_list **b)
 {
 	reverse_rotate(a, NULL);
 	reverse_rotate(b, NULL);
-	ft_printf("rrr\n");
+	ft_putendl_fd("rrr", 1);
 }
 
 void	printerror(char *s)
 {
-	ft_printf("%s\n", s);
+	ft_putendl_fd(s, 2);
 	exit(1);
 }
 

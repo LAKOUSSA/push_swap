@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 00:50:10 by gloukas           #+#    #+#             */
-/*   Updated: 2023/02/23 04:10:59 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/02/23 05:22:05 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	printerror(char *s)
 {
-	ft_printf("%s\n", s);
+	ft_putendl_fd(s, 2);
 	exit(1);
 }
 
@@ -85,5 +85,5 @@ void	which_instruction(t_list **a, t_list **b, char *act)
 	else if (equal_and_same(act, "rrr\n"))
 		rrr(a, b);
 	else
-		printerror("ERROR");
+		printerror("Error");
 }

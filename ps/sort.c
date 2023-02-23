@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 07:14:57 by gloukas           #+#    #+#             */
-/*   Updated: 2023/02/23 03:19:20 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/02/23 06:31:28 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,27 +58,27 @@ int	the_min(t_list *stack)
 
 void	sort_three(t_list **a)
 {
-	int	min;
-	int	max;
+	int	min_index;
+	int	max_index;
 
-	min = the_min(*a);
-	max = the_max(*a);
-	if (min == 1 && max == 2)
+	min_index = the_min(*a);
+	max_index = the_max(*a);
+	if (max_index == 0 && min_index == 2)
+	{
+		rotate(a, "ra");
 		swap(*a, "sa");
-	else if (min == 2 && max == 0)
+	}
+	if (max_index == 0 && min_index == 1)
+		rotate(a, "ra");
+	if (min_index == 1 && max_index == 2)
+		swap(*a, "sa");
+	if (min_index == 2 && max_index != 0)
+		reverse_rotate(a, "rra");
+	if (min_index == 0 && max_index == 1)
 	{
 		swap(*a, "sa");
-		reverse_rotate(a, "rra");
-	}
-	else if (min == 1 && max == 0)
-		rotate(a, "ra");
-	else if (min == 0 && max == 1)
-	{
-		swap(*a, "sa");
 		rotate(a, "ra");
 	}
-	else
-		reverse_rotate(a, "rra");
 }
 
 void	sort_five(t_list **a, t_list **b)
@@ -99,8 +99,7 @@ void	sort_five(t_list **a, t_list **b)
 		push(a, b, "pb");
 		size--;
 	}
-	if (size <= 3)
-		sort_three(a);
+	sort_three(a);
 	while ((*b) != NULL)
 		push(b, a, "pa");
 }
